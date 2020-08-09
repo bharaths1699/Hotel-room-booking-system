@@ -1,8 +1,7 @@
 # Hotel-room-booking-system
 A HTML, CSS, PHP website for hotel room booking.
 
-create a database in xampp with database by name hotel and 
-in database create a table by name room with attributes: 
+create a database in xampp by name hotel and in database create a table by name room with attributes: 
 id varchar(15),
 fname varchar(50),
 mname varchar(50),
