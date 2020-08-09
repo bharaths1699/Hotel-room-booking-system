@@ -69,7 +69,5 @@
         <footer class="item"><label>&copy; Copyright 2019 </label>
         </footer>
     </div>
-    <script src="index.js"></script>
-    
 </body>
 </html>
