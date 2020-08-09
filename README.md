@@ -11,4 +11,4 @@ addr varchar(200),
 email varchar(50),
 contact varchar(10),
 dates varchar(10),
-rtype varchar(16)
+rtype varchar(16).
