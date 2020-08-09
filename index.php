@@ -28,6 +28,7 @@
                 <div>
                     <div>
                         <strong>
+                            <br><br><br>
                             <h3>ABOUT US</h3>
                         </strong>
                         <p style="position:relative; float:left; width:850px;">We cater to business and leisure
@@ -87,6 +88,7 @@
 
                         <div id="services">
                         <strong>
+                            <br><br><br>
                             <strong><h3>SERVICES</h3></strong>
                         </strong>
                         </div>
@@ -120,6 +122,7 @@
 
         <div id="section3" class="item">
             <strong>
+                <br><br><br>
                 <h3>GALLERY</h3>
             </strong>
             <br />

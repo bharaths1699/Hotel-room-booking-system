@@ -1,46 +1,38 @@
 <?php
-$insert = false;
-if(isset($_POST['name'])){
-    // Set connection variables
-    $server = "localhost";
-    $username = "root";
-    $password = "";
+    $insert = false;
+    if(isset($_POST['fname'])){
+    $conn = new mysqli("localhost", "root", "", "hotel") or die(mysqli_error());
+    $id=uniqid('id');
 
-    // Create a database connection
-    $con = mysqli_connect($server, $username, $password);
-
-    // Check for connection success
-    if(!$con){
+    if(!$conn){
         die("connection to this database failed due to" . mysqli_connect_error());
     }
-    // echo "Success connecting to the db";
 
-    // Collect post variables
-    $name = $_POST['name'];
-    $gender = $_POST['gender'];
-    $age = $_POST['age'];
+    $fname = $_POST['fname'];
+    $mname = $_POST['mname'];
+    $sname = $_POST['sname'];
+    $add = $_POST['add'];
     $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $desc = $_POST['desc'];
-    $sql = "INSERT INTO `trip`.`trip` (`name`, `age`, `gender`, `email`, `phone`, `other`, `dt`) VALUES ('$name', '$age', '$gender', '$email', '$phone', '$desc', current_timestamp());";
-    // echo $sql;
+    $contact = $_POST['contact'];
+    $dates = $_POST['dates'];
+    $rtype = $_POST['rtype'];
+    $sql = "INSERT INTO `room` VALUES ('$id' , '$fname', '$mname', '$sname', '$add', '$email', '$contact', '$dates' , '$rtype');";
+    mysqli_query($conn,$sql);
 
-    // Execute the query
-    if($con->query($sql) == true){
-        // echo "Successfully inserted";
-
-        // Flag for successful insertion
-        $insert = true;
+    if($conn->query($sql) == true){
+        $insert=true;
     }
     else{
-        echo "ERROR: $sql <br> $con->error";
+        echo "ERROR: $sql <br> $conn->error";
     }
-
-    // Close the database connection
-    $con->close();
+    $conn->close();
+    if($insert == true){
+        echo "<p class='submitMsg'>Thanks for booking, confirm by the date of booking by visiting our hotel.</p>";
+    }
+    header("Location: book.php");
+    exit;
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,30 +46,28 @@ if(isset($_POST['name'])){
             <a href="index.php">Home</a></a>
     </div>
     <div>
-        <br><br><br><br>
-        <p>Enter your details and submit this form to confirm your participation in the trip </p>
-        <?php
-        if($insert == true){
-        echo "<p class='submitMsg'>Thanks for submitting your form. We are happy to see you joining us for the US trip</p>";
-        }
-    ?>
-        <form action="index.php" method="post"><br>
+        <br><br><br>
+        <strong><p style="background-color:grey; left:0px; right:0px;">Enter your details for booking room:</p></strong>
+        <form action="book.php" method="post"><br>
             <input type="text" name="fname" id="fname" placeholder="First Name"><br><br>
             <input type="text" name="mname" id="mname" placeholder="Middle Name"><br><br>
-            <input type="text" name="sname" id="sname" placeholder="Second Name"><br><br>
-            <textarea name="addr" id="addr" cols="30" rows="10" placeholder="Enter the address"></textarea><br><br>
+            <input type="text" name="sname" id="sname" placeholder="Last Name"><br><br>
+            <textarea name="add" id="add" cols="30" rows="10" placeholder="Enter the address"></textarea><br><br>
             <input type="email" name="email" id="email" placeholder="Email"><br><br>
             <input type="text" name="contact" id="contact" placeholder="Contact"><br><br>
-			<input type = "date" name = "date" id="date" required = "required" placeholder="Date"><br><br>
-        <label for="rtype">Choose a room type:</label>
-        <select id="rtype">
-        <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="opel">Opel</option>
-        <option value="audi">Audi</option>
-        </select><br><br>
+			<input type = "date" name = "dates" id="dates" required = "required" placeholder="Date"><br><br>
+        <label for="l">Choose a room type:</label>
+        <select name="rtype">
+        <option value="standard">Standard</option>
+        <option value="superior">Superior</option>
+        <option value="super">Super delux</option>
+        <option value="jr">Jr suite</option>
+        <option value="executive">Executive suite</option>
+        </select><br><br><br><br>
         <button class="btn">Submit</button> 
-        </form>
+        </form><br><br><br>
+        <footer class="item"><label>&copy; Copyright 2019 </label>
+        </footer>
     </div>
     <script src="index.js"></script>
     
