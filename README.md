@@ -14,5 +14,5 @@ pw varchar(65)
 
 and room with attributes:
 user varchar(65),
-dates varchar(8),
+dates varchar(10),
 rtype varchar(18).
