@@ -12,7 +12,12 @@ contact varchar(10),
 user varchar(65),
 pw varchar(65)
 
-and room with attributes:
+room with attributes:
 user varchar(65),
-dates varchar(10),
-rtype varchar(18).
+d varchar(10),
+rtype varchar(18),
+status varchar(10)
+
+badmin with attributes:
+admin varchar(500,
+pw varchar(50)
