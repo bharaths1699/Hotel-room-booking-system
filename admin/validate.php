@@ -5,15 +5,15 @@ if(!$con){
     die("connection to this database failed due to" . mysqli_connect_error());
 }
 
-$user = $_POST['user'];
+$admin = $_POST['admin'];
 $pw = $_POST['pw'];
 
-$q="select * from bhotel where user='$user' && pw='$pw'";
+$q="select * from badmin where admin='$admin' && pw='$pw'";
 $r=mysqli_query($con,$q);
 $n=mysqli_num_rows($r);
 if($n>0){
-    $_SESSION['user']=$user;
-    header('location:room.php');
+    $_SESSION['admin']=$admin;
+    header('location:results.php');
 }
 else{
     echo '<script>alert("Username or Password incorrect!")</script>';
